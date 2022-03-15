@@ -1,0 +1,54 @@
+{
+	"name": "dataflow1",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "ventas",
+						"type": "DatasetReference"
+					},
+					"name": "ventas"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "DelimitedText1",
+						"type": "DatasetReference"
+					},
+					"name": "resultadoventas"
+				}
+			],
+			"transformations": [
+				{
+					"name": "filtrado"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          id_juego as string,",
+				"          unidades as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: true,",
+				"     ignoreNoFilesFound: false) ~> ventas",
+				"ventas select(mapColumn(",
+				"          id_juegos = id_juego,",
+				"          unidades",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> filtrado",
+				"filtrado sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          Column_1 as string,",
+				"          Column_2 as string",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> resultadoventas"
+			]
+		}
+	}
+}
