@@ -1,0 +1,32 @@
+{
+	"name": "ventas",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ventas_blob_storage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "ventas.csv",
+				"container": "datawarehouseiebs"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "id_juego",
+				"type": "String"
+			},
+			{
+				"name": "unidades",
+				"type": "String"
+			}
+		]
+	}
+}
