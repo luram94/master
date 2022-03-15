@@ -1,0 +1,9 @@
+{
+	"name": "datawarehousedatafactoryluis",
+	"location": "westeurope",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "f2677a46-ba3f-4cbe-bb71-52a9ea12f968",
+		"tenantId": "131feb09-61d2-41e9-8fe0-cf0db36901d5"
+	}
+}
